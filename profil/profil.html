@@ -1,0 +1,49 @@
+<html>
+<head>
+  <link rel="stylesheet" href="../navbar/navbar.css">
+  <link rel="stylesheet" href="profil.css">
+  <link rel="stylesheet" href="../footer.css">
+</head>
+<body>
+
+  <div class="topnav">
+    <a href="../navbar/navbar.html">Home</a>
+    <a href="../login/login.html">Login</a>
+    <a href="../register/register.html">Sign In</a>
+    <a class="active" href="profil.html">Profile</a>
+    <a href="../logout/logout.html">Logout</a>
+  </div>
+
+  <div class="profile-box">
+    <div class="profile-icon">👤</div>
+    <h2>Profil Utilizator</h2>
+    <p><strong>Email:</strong> <span id="user-email"></span></p>
+    <p><strong>Parolă:</strong> <span class="hidden-password">••••••••</span></p>
+  </div>
+
+  <script>
+    const email = localStorage.getItem("email");
+    const loggedIn = localStorage.getItem("loggedIn");
+
+    if (loggedIn !== "true" || !email) {
+      window.location.href = "../login/login.html"; 
+    } else {
+      document.getElementById("user-email").textContent = email;
+    }
+
+        </script>
+<footer>
+  <div class="footer-content">
+    <p>&copy; 2025 Site-ul nostru. Toate drepturile rezervate.</p>
+    <div class="social-links">
+      <a href="#" class="social-icon">Facebook</a>
+      <a href="#" class="social-icon">Twitter</a>
+      <a href="#" class="social-icon">Instagram</a>
+    </div>
+  </div>
+</footer>
+
+
+
+</body>
+</html>

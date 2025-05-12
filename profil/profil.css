@@ -1,0 +1,25 @@
+    .profile-box {
+      width: 300px;
+      margin: 100px auto;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px #ccc;
+      text-align: center;
+      background-color: #f9f9f9;
+    }
+
+    .profile-icon {
+      font-size: 64px;
+      margin-bottom: 20px;
+    }
+
+    .hidden-password {
+      letter-spacing: 5px;
+      color: #555;
+    }
+
+    .topnav {
+      position: fixed;
+      top: 10px;
+      left: 10px;
+    }

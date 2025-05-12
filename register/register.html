@@ -1,0 +1,120 @@
+<html>
+  <body>
+    <head>
+      <link rel="stylesheet" href="../navbar/navbar.css">
+      <link rel="stylesheet" href="register.css">
+      <link rel="stylesheet" href="../footer.css">
+    </head>
+
+    <div class="login-box">
+      <div class="login-header">
+        <header>Sign In</header>
+      </div>
+      
+      <div class="input-box">
+        <input type="text" id="email" class="input-field" placeholder="Email" autocomplete="off" required>
+        <span id="email-msg" style="color: red; font-size: 12px;"></span>
+      </div>
+      
+      <div class="input-box">
+        <input type="password" id="parola" class="input-field" placeholder="Parola" autocomplete="off" required>
+      </div>
+
+      <div class="input-box">
+        <input type="password" id="parola2" class="input-field" placeholder="Repeta-Parola" autocomplete="off" required>
+        <span id="match-msg" style="color: red; font-size: 12px;"></span>
+      </div>
+      
+      <div class="input-submit">
+        <button class="submit-btn" id="submit"></button>
+        <label for="submit">Sign In</label>
+      </div>
+      
+      <div class="sign-up-link">
+        <p>Aveti cont <a href="../login/login.html">Conecteazate</a></p>
+      </div>
+    </div>
+
+    <div class="topnav" style="
+        position: fixed;
+        top: 10px;
+        left: 10px;
+        ">
+      <a class="active" href="navbar.html">Home</a>
+      <a href="../login/login.html">Login</a>
+      <a href="../register/register.html">Sign In</a>
+      <a href="../profil/profil.html">Profile</a>
+      <a href="../logout/logout.html">Logout</a>
+    </div>
+
+<script>
+  const email = document.getElementById("email");
+  const parola = document.getElementById("parola");
+  const parola2 = document.getElementById("parola2");
+  const mesajParola = document.getElementById("match-msg");
+  const mesajEmail = document.getElementById("email-msg");
+
+  function esteEmailValid(email) {
+    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return regex.test(email);
+  }
+
+  parola2.addEventListener("input", function () {
+    if (parola2.value !== parola.value) {
+      mesajParola.textContent = "Parolele nu coincid.";
+      mesajParola.style.color = "red";
+    } else {
+      mesajParola.textContent = "Parolele coincid.";
+      mesajParola.style.color = "green";
+    }
+  });
+
+  email.addEventListener("input", function () {
+    if (!esteEmailValid(email.value)) {
+      mesajEmail.textContent = "Email invalid.";
+    } else {
+      mesajEmail.textContent = "";
+    }
+  });
+
+  document.getElementById("submit").addEventListener("click", function (event) {
+    event.preventDefault();
+
+    if (!esteEmailValid(email.value)) {
+      alert("Introduceți un email valid.");
+      return;
+    }
+
+    if (parola.value.length < 8) {
+      alert("Parola trebuie să conțină cel puțin 8 caractere.");
+      return;
+    }
+
+    if (parola.value !== parola2.value) {
+      alert("Parolele nu coincid.");
+      return;
+    }
+
+    localStorage.setItem("email", email.value);
+    localStorage.setItem("loggedIn", "true");
+
+    alert("Înregistrare reușită!");
+    window.location.href = "../navbar/navbar.html";
+  });
+</script>
+
+<footer>
+  <div class="footer-content">
+    <p>&copy; 2025 Site-ul nostru. Toate drepturile rezervate.</p>
+    <div class="social-links">
+      <a href="#" class="social-icon">Facebook</a>
+      <a href="#" class="social-icon">Twitter</a>
+      <a href="#" class="social-icon">Instagram</a>
+    </div>
+  </div>
+</footer>
+
+
+
+  </body>
+</html>
