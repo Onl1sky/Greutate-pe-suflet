@@ -1,5 +1,8 @@
-<html>
+<!DOCTYPE html>
+<html lang="ro">
 <head>
+  <meta charset="UTF-8">
+  <title>Profil</title>
   <link rel="stylesheet" href="../navbar/navbar.css">
   <link rel="stylesheet" href="profil.css">
   <link rel="stylesheet" href="../footer.css">
@@ -18,32 +21,34 @@
     <div class="profile-icon">👤</div>
     <h2>Profil Utilizator</h2>
     <p><strong>Email:</strong> <span id="user-email"></span></p>
+    <p><strong>Tel:</strong> <span id="telefon"></span></p>
     <p><strong>Parolă:</strong> <span class="hidden-password">••••••••</span></p>
   </div>
 
   <script>
     const email = localStorage.getItem("email");
+    const telefon = localStorage.getItem("telefon");
     const loggedIn = localStorage.getItem("loggedIn");
 
     if (loggedIn !== "true" || !email) {
-      window.location.href = "../login/login.html"; 
+      window.location.href = "../login/login.html"; // Dacă nu ești logat, redirecționează spre login
     } else {
       document.getElementById("user-email").textContent = email;
+      document.getElementById("telefon").textContent = telefon || "(nespecificat)";
     }
+  </script>
 
-        </script>
-<footer>
-  <div class="footer-content">
-    <p>&copy; 2025 Site-ul nostru. Toate drepturile rezervate.</p>
-    <div class="social-links">
-      <a href="#" class="social-icon">Facebook</a>
-      <a href="#" class="social-icon">Twitter</a>
-      <a href="#" class="social-icon">Instagram</a>
+  <footer>
+    <div class="footer-content">
+      <p>&copy; 2025 Site-ul nostru. Toate drepturile rezervate.</p>
+      <div class="social-links">
+        <a href="#" class="social-icon">Facebook</a>
+        <a href="#" class="social-icon">Twitter</a>
+        <a href="#" class="social-icon">Instagram</a>
+      </div>
     </div>
-  </div>
-</footer>
-
-
+  </footer>
 
 </body>
 </html>
+

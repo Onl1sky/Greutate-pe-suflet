@@ -1,83 +1,87 @@
-<html>
-  <body>   
-    <head>
-      <link rel="stylesheet" href="login.css">  
-      <link rel="stylesheet" href="../navbar/navbar.css">
-      <link rel="stylesheet" href="../footer.css">
-    </head>       
-  <div class="login-box">
-      <div class="login-header">
-        <header>Login</header>
-      </div>
-      
-      <div class="input-box">
-        <input type="text" id="email" class="input-field" placeholder="Email" autocomplete="off" required>
-      </div>
-      
-      <div class="input-box">
-        <input type="password" id="parola" class="input-field" placeholder="Parola" autocomplete="off" required>
-      </div>
-      
-      <div class="forgot">
-        <section>
-          <input type="checkbox" id="check">
-          <label for="check">Ține-mă minte</label>
-        </section>
-        <section>
-          <a href="#">Forgot password</a>
-        </section>
-      </div>
-      
-      <div class="input-submit">
-        <button class="submit-btn" id="submit"></button>
-        <label for="submit">Sign In</label>
-      </div>
-      
-      <div class="sign-up-link">
-        <p>Nu aveti cont? <a href="../register/register.html">Înregistrează-te</a></p>
-      </div>
-    </div>
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8">
+  <title>Login</title>
+  <link rel="stylesheet" href="login.css">  
+  <link rel="stylesheet" href="../navbar/navbar.css">
+  <link rel="stylesheet" href="../footer.css">
+</head>
+<body>   
 
-    <div class="topnav" style="position: fixed; top: 10px; left: 10px;">
-        <a class="active" href="../navbar/navbar.html">Home</a>
-        <a href="login.html">Login</a>
-        <a href="../register/register.html">Sign In</a>
-        <a href="../profil/profil.html">Profile</a>
-        <a href="../logout/logout.html">Logout</a>
+  <div class="login-box">
+    <div class="login-header">
+      <header>Login</header>
     </div>
     
-    <script>
-      document.getElementById("submit").addEventListener("click", function (event) {
-        // Preluăm datele introduse de utilizator
-        let email = document.getElementById("email").value;
-        let parola = document.getElementById("parola").value;
-
-        // Verificăm dacă există datele în localStorage
-        let storedEmail = localStorage.getItem("email");
-        let storedParola = localStorage.getItem("parola");
-
-        // Dacă nu există date în localStorage sau datele nu corespund
-        if (!storedEmail || !storedParola || email !== storedEmail || parola !== storedParola) {
-          // Dacă nu există date sau sunt incorecte, se afișează eroare
-          alert("Autentificare eșuată! Email sau parolă incorecte.");
-        } else {
-          // Dacă datele sunt corecte, succesul
-          alert("Autentificare reușită!");
-          window.location.href = "../navbar/navbar.html"; 
-        }
-      });
-    </script>
-
-<footer>
-  <div class="footer-content">
-    <p>&copy; 2025 Site-ul nostru. Toate drepturile rezervate.</p>
-    <div class="social-links">
-      <a href="#" class="social-icon">Facebook</a>
-      <a href="#" class="social-icon">Twitter</a>
-      <a href="#" class="social-icon">Instagram</a>
+    <div class="input-box">
+      <input type="text" id="email" class="input-field" placeholder="Email" autocomplete="off" required>
+    </div>
+    
+    <div class="input-box">
+      <input type="password" id="parola" class="input-field" placeholder="Parola" autocomplete="off" required>
+    </div>
+    
+    <div class="forgot">
+      <section>
+        <input type="checkbox" id="check">
+        <label for="check">Ține-mă minte</label>
+      </section>
+      <section>
+        <a href="#">Forgot password</a>
+      </section>
+    </div>
+    
+    <div class="input-submit">
+      <button class="submit-btn" id="submit">Sign In</button>
+    </div>
+    
+    <div class="sign-up-link">
+      <p>Nu aveți cont? <a href="../register/register.html">Înregistrează-te</a></p>
     </div>
   </div>
-</footer>
 
-  </body>
+  <div class="topnav" style="position: fixed; top: 10px; left: 10px;">
+    <a class="active" href="../navbar/navbar.html">Home</a>
+    <a href="login.html">Login</a>
+    <a href="../register/register.html">Sign In</a>
+    <a href="../profil/profil.html">Profile</a>
+    <a href="../logout/logout.html">Logout</a>
+  </div>
+  
+  <script>
+    document.getElementById("submit").addEventListener("click", function (event) {
+      let email = document.getElementById("email").value;
+      let parola = document.getElementById("parola").value;
+      let storedEmail = localStorage.getItem("email");
+      let storedParola = localStorage.getItem("parola");
+
+      // Verificăm dacă email și parola sunt corecte
+      if (!storedEmail || !storedParola || email !== storedEmail || parola !== storedParola) {
+        alert("Autentificare eșuată! Email sau parolă incorecte.");
+      } else {
+        // Dacă utilizatorul a selectat "Ține-mă minte", salvează datele
+        if (document.getElementById("check").checked) {
+          localStorage.setItem("email", email);
+          localStorage.setItem("parola", parola);
+        }
+
+        alert("Autentificare reușită!");
+        window.location.href = "../navbar/navbar.html"; 
+      }
+    });
+  </script>
+
+  <footer>
+    <div class="footer-content">
+      <p>&copy; 2025 Site-ul nostru. Toate drepturile rezervate.</p>
+      <div class="social-links">
+        <a href="#" class="social-icon">Facebook</a>
+        <a href="#" class="social-icon">Twitter</a>
+        <a href="#" class="social-icon">Instagram</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
 </html>

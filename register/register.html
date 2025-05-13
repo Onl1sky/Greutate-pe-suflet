@@ -1,120 +1,151 @@
-<html>
-  <body>
-    <head>
-      <link rel="stylesheet" href="../navbar/navbar.css">
-      <link rel="stylesheet" href="register.css">
-      <link rel="stylesheet" href="../footer.css">
-    </head>
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Înregistrare</title>
+  <link rel="stylesheet" href="../navbar/navbar.css">
+  <link rel="stylesheet" href="register.css">
+  <link rel="stylesheet" href="../footer.css">
+</head>
+<body>
 
-    <div class="login-box">
-      <div class="login-header">
-        <header>Sign In</header>
-      </div>
-      
-      <div class="input-box">
-        <input type="text" id="email" class="input-field" placeholder="Email" autocomplete="off" required>
-        <span id="email-msg" style="color: red; font-size: 12px;"></span>
-      </div>
-      
-      <div class="input-box">
-        <input type="password" id="parola" class="input-field" placeholder="Parola" autocomplete="off" required>
-      </div>
-
-      <div class="input-box">
-        <input type="password" id="parola2" class="input-field" placeholder="Repeta-Parola" autocomplete="off" required>
-        <span id="match-msg" style="color: red; font-size: 12px;"></span>
-      </div>
-      
-      <div class="input-submit">
-        <button class="submit-btn" id="submit"></button>
-        <label for="submit">Sign In</label>
-      </div>
-      
-      <div class="sign-up-link">
-        <p>Aveti cont <a href="../login/login.html">Conecteazate</a></p>
-      </div>
+  <div class="login-box">
+    <div class="login-header">
+      <header>Sign In</header>
     </div>
 
-    <div class="topnav" style="
-        position: fixed;
-        top: 10px;
-        left: 10px;
-        ">
-      <a class="active" href="navbar.html">Home</a>
-      <a href="../login/login.html">Login</a>
-      <a href="../register/register.html">Sign In</a>
-      <a href="../profil/profil.html">Profile</a>
-      <a href="../logout/logout.html">Logout</a>
+    <div class="input-box">
+      <input type="text" id="email" class="input-field" placeholder="Email" autocomplete="off" required>
+      <span id="email-msg" style="color: red; font-size: 12px;"></span>
     </div>
 
-<script>
-  const email = document.getElementById("email");
-  const parola = document.getElementById("parola");
-  const parola2 = document.getElementById("parola2");
-  const mesajParola = document.getElementById("match-msg");
-  const mesajEmail = document.getElementById("email-msg");
+    <div class="input-box">
+      <input type="text" id="telefon" class="input-field" placeholder="+373 tel (fără +373)" autocomplete="off" required>
+      <span id="telefon-msg" style="color: red; font-size: 12px;"></span>
+    </div>
 
-  function esteEmailValid(email) {
-    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return regex.test(email);
-  }
+    <div class="input-box">
+      <input type="password" id="parola" class="input-field" placeholder="Parola" autocomplete="off" required>
+    </div>
 
-  parola2.addEventListener("input", function () {
-    if (parola2.value !== parola.value) {
-      mesajParola.textContent = "Parolele nu coincid.";
-      mesajParola.style.color = "red";
-    } else {
-      mesajParola.textContent = "Parolele coincid.";
-      mesajParola.style.color = "green";
-    }
-  });
+    <div class="input-box">
+      <input type="password" id="repetaParola" class="input-field" placeholder="Repeta-Parola" autocomplete="off" required>
+      <span id="match-msg" style="color: red; font-size: 12px;"></span>
+    </div>
 
-  email.addEventListener("input", function () {
-    if (!esteEmailValid(email.value)) {
-      mesajEmail.textContent = "Email invalid.";
-    } else {
-      mesajEmail.textContent = "";
-    }
-  });
+    <div class="input-submit">
+      <button class="submit-btn" id="submit"></button>
+      <label for="submit">Sign In</label>
+    </div>
 
-  document.getElementById("submit").addEventListener("click", function (event) {
-    event.preventDefault();
-
-    if (!esteEmailValid(email.value)) {
-      alert("Introduceți un email valid.");
-      return;
-    }
-
-    if (parola.value.length < 8) {
-      alert("Parola trebuie să conțină cel puțin 8 caractere.");
-      return;
-    }
-
-    if (parola.value !== parola2.value) {
-      alert("Parolele nu coincid.");
-      return;
-    }
-
-    localStorage.setItem("email", email.value);
-    localStorage.setItem("loggedIn", "true");
-
-    alert("Înregistrare reușită!");
-    window.location.href = "../navbar/navbar.html";
-  });
-</script>
-
-<footer>
-  <div class="footer-content">
-    <p>&copy; 2025 Site-ul nostru. Toate drepturile rezervate.</p>
-    <div class="social-links">
-      <a href="#" class="social-icon">Facebook</a>
-      <a href="#" class="social-icon">Twitter</a>
-      <a href="#" class="social-icon">Instagram</a>
+    <div class="sign-up-link">
+      <p>Aveți cont? <a href="../login/login.html">Conectează-te</a></p>
     </div>
   </div>
-</footer>
 
+  <div class="topnav" style="position: fixed; top: 10px; left: 10px;">
+    <a class="active" href="navbar.html">Home</a>
+    <a href="../login/login.html">Login</a>
+    <a href="../register/register.html">Sign In</a>
+    <a href="../profil/profil.html">Profile</a>
+    <a href="../logout/logout.html">Logout</a>
+  </div>
 
+  <script>
+    const email = document.getElementById("email");
+    const telefon = document.getElementById("telefon");
+    const parola = document.getElementById("parola");
+    const repetaParola = document.getElementById("repetaParola");
 
-  </body>
+    const mesajEmail = document.getElementById("email-msg");
+    const mesajTelefon = document.getElementById("telefon-msg");
+    const mesajParola = document.getElementById("match-msg");
+
+    function esteEmailValid(email) {
+      const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      return regex.test(email);
+    }
+
+    function esteTelefonValid(telefon) {
+      return /^\d{8}$/.test(telefon);
+    }
+
+    function esteParolaPuternica(parola) {
+      const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$/;
+      return regex.test(parola);
+    }
+
+    email.addEventListener("input", function () {
+      if (!esteEmailValid(email.value)) {
+        mesajEmail.textContent = "Email invalid.";
+      } else {
+        mesajEmail.textContent = "";
+      }
+    });
+
+    telefon.addEventListener("input", function () {
+      if (!esteTelefonValid(telefon.value.trim())) {
+        mesajTelefon.textContent = "Numărul trebuie să conțină exact 8 cifre.";
+      } else {
+        mesajTelefon.textContent = "";
+      }
+    });
+
+    repetaParola.addEventListener("input", function () {
+      if (repetaParola.value !== parola.value) {
+        mesajParola.textContent = "Parolele nu coincid.";
+        mesajParola.style.color = "red";
+      } else {
+        mesajParola.textContent = "Parolele coincid.";
+        mesajParola.style.color = "green";
+      }
+    });
+
+    document.getElementById("submit").addEventListener("click", function (event) {
+      event.preventDefault();
+
+      if (!esteEmailValid(email.value)) {
+        alert("Introduceți un email valid.");
+        return;
+      }
+
+      if (!esteTelefonValid(telefon.value.trim())) {
+        alert("Numărul de telefon trebuie să aibă exact 8 cifre.");
+        return;
+      }
+
+      if (!esteParolaPuternica(parola.value)) {
+        alert("Parola trebuie să aibă cel puțin 8 caractere, o literă mare, una mică, o cifră și un simbol.");
+        return;
+      }
+
+      if (parola.value !== repetaParola.value) {
+        alert("Parolele nu coincid.");
+        return;
+      }
+
+      // Salvarea datelor în localStorage
+      localStorage.setItem("email", email.value);
+      localStorage.setItem("telefon", telefon.value.trim());
+      localStorage.setItem("parola", parola.value);  // Salvăm parola și pentru logare
+      localStorage.setItem("loggedIn", "true");
+
+      alert("Înregistrare reușită!");
+      window.location.href = "../navbar/navbar.html";
+    });
+  </script>
+
+  <footer>
+    <div class="footer-content">
+      <p>&copy; 2025 Site-ul nostru. Toate drepturile rezervate.</p>
+      <div class="social-links">
+        <a href="#" class="social-icon">Facebook</a>
+        <a href="#" class="social-icon">Twitter</a>
+        <a href="#" class="social-icon">Instagram</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
 </html>

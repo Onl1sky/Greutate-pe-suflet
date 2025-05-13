@@ -1,22 +1,21 @@
-<html>
+<!DOCTYPE html>
+<html lang="ro">
 <head>
+  <meta charset="UTF-8">
+  <title>Logout</title>
   <link rel="stylesheet" href="../navbar/navbar.css">
-  <link rel="stylesheet" href="logout.css"> 
+  <link rel="stylesheet" href="logout.css">
   <link rel="stylesheet" href="../footer.css">   
 </head>
 <body>
     
-    <div class="topnav" style="
-      position: fixed;
-      top: 10px;
-      left: 10px;
-    ">
-        <a class="active" href="../navbar/navbar.html">Home</a>
-        <a href="login.html">Login</a>
-        <a href="../register/register.html">Sign In</a>
-        <a href="../profil/profil.html">Profile</a>
-        <a href="../logout/logout.html">Logout</a>
-    </div>
+  <div class="topnav" style="position: fixed; top: 10px; left: 10px;">
+    <a class="active" href="../navbar/navbar.html">Home</a>
+    <a href="login.html">Login</a>
+    <a href="../register/register.html">Sign In</a>
+    <a href="../profil/profil.html">Profile</a>
+    <a href="../logout/logout.html">Logout</a>
+  </div>
 
   <div class="logout-box">
     <h2>V-ați deconectat cu succes!</h2>
@@ -24,27 +23,26 @@
   </div>
 
   <script>
+    // Șterge datele de autentificare din localStorage
     localStorage.removeItem("email");
     localStorage.removeItem("parola");
-    localStorage.setItem("loggedIn", "false");
+    localStorage.removeItem("loggedIn");
 
-    setTimeout(function () {
-      window.location.href = "../login/login.html";
-    }, 2000);
+    // Afișează mesajul de deconectare și redirecționează imediat
+    alert("Deconectare reușită!");
+    window.location.href = "../login/login.html";  // Redirecționează imediat
   </script>
 
-<footer>
-  <div class="footer-content">
-    <p>&copy; 2025 Site-ul nostru. Toate drepturile rezervate.</p>
-    <div class="social-links">
-      <a href="#" class="social-icon">Facebook</a>
-      <a href="#" class="social-icon">Twitter</a>
-      <a href="#" class="social-icon">Instagram</a>
+  <footer>
+    <div class="footer-content">
+      <p>&copy; 2025 Site-ul nostru. Toate drepturile rezervate.</p>
+      <div class="social-links">
+        <a href="#" class="social-icon">Facebook</a>
+        <a href="#" class="social-icon">Twitter</a>
+        <a href="#" class="social-icon">Instagram</a>
+      </div>
     </div>
-  </div>
-</footer>
-
-
+  </footer>
 
 </body>
 </html>
